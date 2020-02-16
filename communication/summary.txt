@@ -1,0 +1,36 @@
+summary for ch 4: communication
+* flexible and power facilities for comminctaion between procceses are essential for any distributed applications
+* tradition network application commincation is handeled on low level message passing primitves offered by the transport layer
+* critical issue in middleware systems is to provide / offer a higher level of abstraction that will make it easier to express communcation between procceses than the support offerred by the interface to the transport layer
+* widely used abstractions inclide rpc calls (remote procedure calls)
+* rpc
+    * provides a service by means of a procedure
+    * the body is executed at the server
+    * when the client calls the procedure the client side implemetation called the stub takes care of wrapping the parameter values into a message and sending that to the server
+    * client stub extracts the resutl vallues from teh retunr message and passes it back to th ecalling client application
+    * rpcs offer synchronous facilities but which the client is blocked until the server has sent the reply
+* message oriented systems
+    * issues whether or not communcication is persistent
+    * whether or not commication is synchronous
+    * persistent communication is sotred by the communication system as long as it takes to deliver it
+* transient communication
+    * no storage facilities are offered, so a receiver must be prepared to accept the message when it is sent ...
+* async communcation
+    * the sender is allowed to conitnue immediatly after the message has been submited for transmission
+* sync communication
+    * the sender is blocked at least untilt a message has been received
+    * send may be blocked untul the mesasge delivery gas taken place or even until the receiver has reponded as with RPCS
+* message oriented middleware models generally offer persistent asyn communcation and are used where rpcs are not appropriate ...
+    * assist integration of collections of databases in large scale information systems
+* multicasting
+    * important class of commication protocols
+    * dissiminate information from one sender to multiple receivers
+    * setting up a tree from the sender to the receivers
+        * how nodes cans elf org in p2p system, dynamically set trees in decentralized fashio
+    * flooding messages is robust albiet requires special attntion if we watn to avoid waste of resources as nodes may see messages mult times
+        * probabilistic floding is more appropriate
+            * with certain probability node fowards a message, it often proves to combine simplicity and efficiency.
+    * epidemic protocols
+        * have been proven to be very simepl and extremely robust
+        * can be efficienyl deployed for aggregating information acorss a large distributed system
+
