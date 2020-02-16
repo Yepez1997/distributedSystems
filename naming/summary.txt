@@ -1,0 +1,41 @@
+summary for chapter 5: naming
+* names are used to refer to entities
+* three types of names
+    * an adress is the name of an access point assoc with an entity (address of an entity)
+    * an identifier
+        * each entity is referred to by one identifier
+        * an identifier refers to only one entity
+        * never assigned to another entity
+    * human friendly names
+    * flat naming, structure naming, and attribute based naming
+* flat naming
+    * need to resolve an identifier to the address of its associated enity
+    * locating an entity can be done in different ways
+        * broadcasting or multcasting
+            * idenitifier of the entity is broadcast to every process in the distributed system
+            * process offering an acces point for the entity responds  by providing
+        * forwarding pointers
+            * each time an entity moves to a next location it leaves behind a pointer telling where it will be next
+            * locating the entity requires traversing the apth of forwarding pointers
+            * reduce chains periodically
+        * allocate a home to an entity
+            * locating an entity proceeds by first asking the home of the current location
+        * organize all nodes into a structured p2p and assign nodes to entities taking their respective identifiers into account
+            * devising a routing alg by which lookup requests are moved toward the node responsible for a given entity
+        * hierarchical search tree
+            * network is divided into non overlapping domains
+            * domains can be grouped into hight level no overlapping domains
+        * lowest level director node stores teh address of the entity
+        * structured names are easlity oganized in a namespace
+    * name space can be represented by a naming graph in which a node represents a named entity and the label on an edge represents the name under which the entity is know
+    * node having multiple outgoing edges represents a collection of entities and is also known as a context node or directory
+    * large scale naming graphs is implemented by distributed its nodes across multiple name servers
+* attribute based naming schems
+    * (atrr, value) pairs
+    * queries xan also be formulated as pairs
+    * requiring exhaustive search through all the descriptors
+    * such a search is feasible only when the descriptors are stored in a single data base
+    * alt solution are in which pairs are mapped onto DHT based systems
+    * space filling curves to evenly distribute loads
+
+
