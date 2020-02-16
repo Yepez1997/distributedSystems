@@ -1,0 +1,18 @@
+summary for chapter 1: introduction
+* distributed systems consist of autonomous computers that works together and act as a single coherant system
+* middleware allows the combination of collective and independent behavior
+* middleware is the sofyware layer placed between operating systems and distributed applications
+* protocols for those include communication, transactions, service composition, and reliablity
+* sharing resources and ensuring openess
+* distribution transparency comes with a performance price and is intended to hide many of the processes and data that happen in the distributed processes
+* trade offs between difference forms of distrubution transparcy inhereted can complicate understanding
+* scalability does not always blend with distrubtion transparency
+    * geographic scalabilty - hiding latencies and bandwidth may be
+    difficult
+* many developers make assumptions about the network that are fundamentally wrong
+    * network is low latency
+    * network is secure
+    * network is homogenous
+    * network is reliable
+* distributed computing systems are typically deployed for high performance applications
+    * often originating from parrallel computing
