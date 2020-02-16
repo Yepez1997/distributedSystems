@@ -1,0 +1,32 @@
+summary for ch 6: coordination
+* communication and is important to how ds synchornize
+* problem in ds is no notion of globally shared clock
+* different machines have their own notion of time
+* various ways to syn clocks in ds , and all methods ar based on exchaning clock values while taking into consideration the time it takes to receive messages
+* variations in communication delts and the ways those variations are delt with determian the accuracy of clock sync algs
+* knowing abs time is not necc albiet the related events should happen in correct order
+* lamport introduced the notion of logical clocks
+    * possible for a collection of procceses to reacha a gloabla greement on the correct ordering of events
+    *  can be extended to vector timestamps if we know that event is casualy preceded to b ...
+* distributed mutual exclusio
+    * ensure that in a distrubted collection of proces.. at most one process at a time has access to a shared resource
+    * can be easily achieved if we make use of a coordinator to keep track of whose turn it is
+    * sync often requires one process is the coordinator
+    * in the case where the coord is ot fixed, process needs to decide a coord.
+    * this is done through election algs
+* election algs
+    * bully alg, berkeley alg.
+    * primarliy used in cases where the coordinator can crash
+    * also applied to the selection of super peers in p2p
+* positioning nodes in geometric overlay
+    * assign each nodes coord from an m dim space such taht the geometric distance can be used as an accurte  measure for the latency between two nodes
+        * sim to location and time in gps
+* challenging - distributed event matching
+    * core in pub sub systems
+    * central impl where mathcin subs against notifcations can be done by essemtially doign one on one comparisons
+    * as soon as we aim at the distr the load, which nod is resp for sub
+* gossip  based  coordination
+    * able to select another peer randomly from an entire overlay
+    * implement sucha peer sampling service using gossiping
+    * ensuring that the partial view is refreshed regularly and in a random way
+    * efficiently construct overlay networks
