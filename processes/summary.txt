@@ -1,0 +1,31 @@
+summary for chapter 3: proccess
+* procceses form the basis for comminication between difference machines in distributed systems
+* it is critical issue in how the proc are organized and whether or not they support multiple threads of control
+* threads in ds are useful when continuing using cpu even when blocking io happens
+    * as a result it becomes possible to build highly scalable applications that run in parrallel of whihc several may be blocking to wait until disk io or network completes
+* threads are preferred when performace is at stake
+* virtualization has gained tremendouse attenton
+* popular virtualiztion techniques allow users to run a suite of pplication on top of their favorite os and completly conf a distributed application
+* organizing applications in terms of clients and servers has been proven to be useful
+    * client procces generally implement user interfaces
+    * aimed at achieving distribution transparency
+        * hiding details concerning communication with servers
+    * client software is responsible for hiding failires and recovery
+* servers can be iterative or concurrent, implement one or more services, and can be stateless, or stateful
+* special attention needs to be pated when organizing servers into a cluster
+    * hide internals of the cluster from the outside world
+    * organization should be shielded from the outside world
+    * usually done by a single point of entry that can be handed off the cluster
+    * challening issue is to transparently replace the single entry point by a fully distributed application
+* advanced object servers have been deployed for hosting remote objects.
+    * object server provides many services to basic objects
+        * storing objects
+        * ensuring serialization of incomming requests
+    * providing the illusion that to the outside world that a collection of data and procedures oeprating on that data correspond to the concept of an object
+* migration of code between different machines
+    * increased performance and flexibility
+    * when communication is expensive we can sometimes reduce
+        * allow client to do as much local proccesing
+        * flexibility  is increased when a clinet can dynamically download software needed to communcicate with a specific server
+* code migration ensures we assume that there is  heterogeneity
+* best way to handle heterogenity is to use virtual machines
