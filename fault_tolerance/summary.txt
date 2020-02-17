@@ -1,0 +1,38 @@
+chapter 8 summary: fault tolerance
+* ft is the characteristic by which a system can mask the occurenc and recovery from failures
+* system is fault tolerant if it can continue to operate in presence of failures
+* several failures exists
+    * crash failures
+        * simply halts
+    * omission failure
+        * does not respond to an incomming request
+    * response failure
+        * responding to a incomming request in a wrong way
+    * byzantine failures
+        * worst failures
+* redundancy is needed to achieve fault tolerance
+* process groups
+    * consist a number of proceses that closely cooperate to provide a service.
+    * fault tolerant pg
+        * one or more proceses can failt without affecting the
+            availablity of the service the group implments
+        * communication should be highky reliable and adheres to stringent ordering and atomicty properties in order to achieve ft
+    * members of a pg need to reach consensus in presence of failures
+    * paxos is well established
+    * by using 2k + 1 servers, it can establish k fault tolerance
+    * by using 3k + 1 servers if it is needed to deal with arb failures
+* reliable group communication is also called reliable multicasting and comes in different forms
+    * as soon as groups get large rel multicasting becomes problematic
+    * reduce the number of feedback messages by which receivers repor the unsuccessful  receipt of a multicasted message
+* atomic multicast protocols it is essential that each group member has the same view concerning to whihc members a multicasted message has been delivered.
+    * virtual sync model
+        * boundaries in which group membership does not change and messages are reliably transmitted
+* group membership changes in which  each proccess needs to  agree on the same list  of   members. commit protocl
+* example 2pc
+    * coordinator checks if all processes agree on the same ope, then multicasts the outcome to that poll.
+* 3pc is needed to handle the crahsh of the coordinator
+* recovery
+    * achieved thruogh checkpointing
+        * expensive
+    * combine chkpts with message logging - less expensive
+        * replay execution after a crash has occured
