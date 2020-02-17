@@ -1,0 +1,26 @@
+chapter 9 : security:
+* ds should allow different security policies to be enforced
+* three important issues to be considered
+    * ds should offer fauclities to establish secure channels between processes
+        * mutually authentication the communicating parties and protect against tampering their transmission
+        * provides confidentiality so that no one but the communicating parties can read the messages that go through the channel
+* use symetric cryptosystem or combine it with public key system
+* session keys for longterm
+* second issue to be considered
+    * access control or authorization
+        * autheri deals with protecting resources in such a wasy that only processes that have the proper acess rights can actual access and use those resources
+        * always takes place after a process has been authenticated
+        * denial or service (rate limit ...)
+    * two ways of implmenting access control
+        * each resource maintains an ac list listing each rights o each user or process
+        * a process can carry a certifcate stating  precicely whta its rights are for part set of resources
+        * cert benifit - a ticket can easily pass its ticket to another process and pass its access rights
+    * dealing wiht ac in mobile code
+        * sandboxes
+* third issue to be considered
+    * concerns management
+    * key management and authorization
+        * km includes distribution of crytographic keys
+        * auth managment are attr certificates and delegation
+* handling secure names
+    * name an object by taking the hash of its pk along with a human readable label
