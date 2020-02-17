@@ -1,0 +1,40 @@
+chapter 7:  consistency and replication
+* main reasons for replicating: reliability and performance
+* introduces consistency problem
+    * when a replica is updated the rest become different
+    * solutiuon is to propgate changes such that inconsistencies are unoticed
+    * severly degrade performace
+* relax consistency somewhat
+* difference conistency models exist
+    * continuous consistency
+        * set bounds to numerical deviation between replicas, staleness deviation, and deviation in the ordering of operations
+    * numeral deviation refers to the value by which replicas may be different
+        * application dependent
+    * staleness deviation refers to the time by which a replica is considered to be consistent - despite update may taken place some time ago
+        * used for web caches
+    * ordering deviation refers to the max number of tentaive writes
+        that may be understandint at any server without having being sync with other servers
+* sequential consistency provides the semantics that programmer expect in concurrent programming
+    * all writes are seen by everyone in the same order
+* casual consistency
+    * operatatiosn are potentially dependent on each other are carried out in order of dependency
+* weaker consistency models consider a series of read and write operations
+* client centric conistency models
+    * do not consider the fact that data may be shared by several users
+    * concentrate on consistency that an ind client should be offered
+    * client connects to differet replicas on the course of the lifetime
+    * when a client connects to a new replica the replica shoudl have the most up to date data that had been manipulated by the user
+        * which may reside at the previous location
+* propogating updates
+    * difference  techniques can be applied
+        * what is propogated versus whwer updates are propogated and by whom
+* not every replica needs  to be  updated immediatly
+    * depends on the distribution protocol
+    * whether updates are pushed to other replicas or that a replica pulls in updates from other replicas
+* consistency protocols descibe specific implemet of consistency models
+* primary based protocols versus replicated write protocols
+    * primary based protocols all update operations are forwarded tro a primary copt that sub seqeuently ensure the update is properly order and forwarded
+    * replicated write protocols an update is forwarded to several replcis at the same time.
+* caching content
+    * write through versus write back
+
