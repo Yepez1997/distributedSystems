@@ -1,0 +1,74 @@
+* google file system
+    * big storage
+        * why hard
+            * huge aggregate performace
+        * performance
+        * split data over huge number of servers
+            * sharding
+        * fault tolerance
+            * solution -> replication
+            * can have out of sync replicas
+            * risk weired inconsistencies
+            * consistency -> pay with low performance
+        * strong consistency is expensive
+            * 1 server that acts as the primary ...
+    * bad replication design
+        * reads process by single server
+    * big and fast fs
+    * global and universal fs ...
+    * split data to many servers using sharding ...
+        * high aggregate throughput
+    * automatic failure recovery
+    * single data center ...
+    * big sequential read and writes ...
+    * focus is on throughput
+    * use of single master
+    * hundreds of clients, many chunk servers, and one master
+    * master knows where chunks are located
+    * master data (volatile - not written to disk, non volatile - written to disk)
+        * two main tables: maps filenames -> array of chunk ids (non volatile)
+        * cont. and chunk handle -> data baout the chunk ... (volatile)
+            * list of chunk server version numbers, version #, primary identity
+            * lease expiration
+            * all the data stored on disk / ram
+        * log on disk, appends log to disk, checkpoint -> disk
+            * append to a log efficiently
+            * alt is a b tree, hash index
+        * whenever a file is extended to a new chunk
+        * checkpoints its complete state to disk - do not want to restart from the begining,
+        only star from the checkpoint.
+        * READ OP
+            * 1. filename, offset (range of bytes in the file) -> master
+            * 2. master sends handler -> list of servers
+                * client caches the result
+            * 3. client talks to one of the chunk servers
+                return data to the client
+            * read from the replica in the same rack ...
+        * WRITES OP
+            * records appends
+            * client makes lib call and i'd love to append ...
+            * 1. client asks the master to append to the named file
+            * 2. where to look ...i
+            * no primary ?
+                * master needs to find the most up to date server with the updated chunks
+                * find up to date replicas
+                * picks a primary, secondary
+                    * master increments the version number + writes to disk
+                    * sends primary to secondary the new information + version #
+                    * incase of failure, report to master the most recent version number.
+                * master writes version number to disk
+                * gives primary a lease ...
+                    * making sure we do not end up with two primaries
+                * primary picks off all the replicas told to write
+                * if all reply yes
+                    * primary replies success to the client
+                * else
+                    * primary replies no ...
+                    * re issue append operation
+            * two primaries - split brain
+                * usually caused by network partition
+                * partial network failure ...
+                * gives primary a lease ... look into election algorithms
+
+
+
