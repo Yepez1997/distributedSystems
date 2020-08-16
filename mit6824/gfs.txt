@@ -70,5 +70,5 @@
                 * partial network failure ...
                 * gives primary a lease ... look into election algorithms
 
-
+* strong consitency with 2pc
 
