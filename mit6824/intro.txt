@@ -1,0 +1,28 @@
+strong constistency v. weak consistency
+replica tradeoff
+20-30ms per update can be expesise op in strong consistency ...
+paralllism / fault tolerance
+* map reduce
+    * google running huge computations on data
+    * batch processing system
+    * sort on entire internet is expensive
+    * easy for non specialist to run distrubuted computation
+        * what map reduce is all about
+    * starts assuming there is some input and is split into files / chunks
+    * define a map function and runs on each of the input files
+    * output is required to produce a list of k.v pairs
+    * word count map reduce job
+    * collect all keys with the same ki and pass it to the reducer
+    * one call to reduce for every key
+    * entire job is made up of n map tasks and m map tasks where n <= m
+    * map(k, v)
+        split v into work
+        for each word w:
+            emit(w , 1)
+    * reduce(k, v)
+        emit(len(v))
+    * ran gfs servers on the same set of machines
+    * network as a bottleneck ... in a distruted environment
+    * shuffle storage ...
+    * wait until you get the data, then process it ...
+
