@@ -1,0 +1,58 @@
+* go
+    * support for threads, locking, sync between threads
+    * procedure call packge
+    * type and memory safe
+    * garbage collected free things and stop being used
+    * combination threads + gc -> important
+    * when last thread finished the object
+        * manually do reference counting when the last thread ...
+    * threads to manage concurency
+        * go routines
+    * threads
+        * one program and one address space
+        * for every thread there is a stack
+* threads are important
+    * i/o concurrency
+    * multi core parallelism
+        * compute heavy job that uses lots of heavy cpu cycles
+    * convinience reasons
+        * master server to check if one of the servers is alive
+        * fire off a go routine in a loop
+            * sleep every n seconds ...
+* event driven
+    * waits on input ...
+    * table on the state of the activity for client ..
+    * 1000 threads w/ 4-8kb stack no problem
+    * 10000000 threads - problem
+* running go program - runs one unix process
+    * run more than one process in a machine
+        * virtual memory
+
+* threads share the same address space
+    * be careful on race conditions
+    * insert locks using mutex, semephore
+        * becomes atomic
+* cycles + deadlocks
+    * deadlocks - detect with a cyclic graph
+* issue with threads
+    * coordination
+        * want different threads to interact
+        * channels, sending data from one thread to another
+        * condition variables
+            * condition on some threads
+        * waitgroup
+            * launching a known number of go routines and waiting for
+            them to finish
+    * deadlock
+        * thread 1 is waiting on thread 2 and thread 1 is waiting on thread 2
+        * cyclic dependency graph
+* web crawler
+    *  threading stuff
+    * give url of a pages and fetch further pages
+    * tree shape subset of cyclic webpages
+    * avoid cycles, and not fetch a page twice
+    * fetch many pages at the same time
+    * increase concurrency
+    * know when the crawler is finished
+    * figuring out when you are done is the most difficult
+
