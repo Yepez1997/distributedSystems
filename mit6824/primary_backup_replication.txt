@@ -1,0 +1,58 @@
+* provide services even if down
+* Failures - fail
+    * fail stop faults
+    * can't defend against bugs
+    * cannot expect to deal with bugs in the hardware
+    * replicas == more compute power
+* approaches to replication
+    * state transfer
+        * if we have replicas of a server
+        * cause to stay in sync
+            * primary sends copy to backup from ram
+        * contents of ram / contents of primary across the network
+        * transfers memory
+        * data could be the entire db ...
+        * more robust with multicore + parallism
+    * replicated state machine
+        * observes most services have some internal application
+        * except when external input comes in
+        * transfers memory backup .. ?
+        * usualy ops are smaller than tha state
+        * more complicated schemes on how the computers operate
+        * problem with parallism
+        * build replicated state scheme
+            * at what level are we going to replicate state
+            * how close primary and secondary have to be
+            * opportunity where backup is not fully caught up
+            * alot of design as to how close the sync is ...
+            * some scheme for switching over, almost like a context switch
+        * switch over almost impoible where no anomlies are there ...
+        * anamlies during the cut over
+        * if one of the replicas failed, need to get a new replica back online
+        * two replicas new replicas need to keep a copy of the state
+* all memory + registers for replication schemes ?
+* more like gfs ? was not replicated every single bit of memory, replicating chunks
+* most replication schemes go through the gfs route, some level of application
+* paper is unique, replicates at the level of the machine ...
+* vm ware fault tolerance
+    * virtual machine company
+        * hyervisor job to simulate multiple computers
+        * requires two physical machines
+        * gaurd against hardware failure i
+    * some things can be non deterministic
+    * non deterministic events that may happen
+        * inputs from external sources / clients
+        * services talk over the network
+            * packet arrives, data in the packet plus the interupt that the packet arrived
+            * dumps packet into memory
+            * when the interupt happens , should be the same in the primary + secondary
+            * weird instructions
+            * multi core parallism
+            * service running on multiple cores
+    * log entry
+        * instruction number
+        * type
+        * data
+    * guest operating system -- interupts ?
+    * have to happen in primary + backup
+    *
