@@ -55,4 +55,5 @@
         * data
     * guest operating system -- interupts ?
     * have to happen in primary + backup
-    *
+    * back up at least on event behind the primary
+    * output rule - ack request - sync - can be non performant
